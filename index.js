@@ -1,0 +1,1 @@
+var synaptic = require('synaptic')

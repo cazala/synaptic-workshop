@@ -1,0 +1,16 @@
+{
+  "name": "synaptic-workshop",
+  "version": "1.0.0",
+  "description": "Synaptic workshop for Meetup 2017",
+  "main": "index.js",
+  "keywords": [
+    "synaptic",
+    "workshop"
+  ],
+  "author": "Juan Cazala",
+  "license": "MIT",
+  "dependencies": {
+    "mnist": "^1.0.5",
+    "synaptic": "^1.0.8"
+  }
+}
