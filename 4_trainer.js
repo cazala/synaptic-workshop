@@ -1,14 +1,24 @@
 var synaptic = require('synaptic')
 
-var Architect = synaptic.Architect
 var Trainer = synaptic.Trainer
 var Network  = synaptic.Network
 var Layer  = synaptic.Layer
 var Neuron = synaptic.Neuron
 
-var net = new Architect.Perceptron(2,4,1)
-var trainer = new Trainer(net)
+var input = new Layer(2)
+var hidden = new Layer(4)
+var output = new Layer(1)
 
+input.project(hidden)
+hidden.project(output)
+
+var net = new Network({
+  input: input,
+  hidden: [hidden],
+  output: output
+})
+
+var trainer = new Trainer(net)
 var set = [
   {
     input: [0, 0],
