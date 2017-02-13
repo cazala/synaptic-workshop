@@ -1,6 +1,5 @@
 var synaptic = require('synaptic')
 
-var Trainer = synaptic.Trainer
 var Network  = synaptic.Network
 var Layer  = synaptic.Layer
 var Neuron = synaptic.Neuron
@@ -18,31 +17,25 @@ var net = new Network({
   output: output
 })
 
-var trainer = new Trainer(net)
-var set = [
-  {
-    input: [0, 0],
-    output: [0]
-  },
-  {
-    input: [1, 0],
-    output: [1]
-  },
-  {
-    input: [0, 1],
-    output: [1]
-  },
-  {
-    input: [1, 1],
-    output: [0]
-  }
-]
+var rate = 0.1
+for (let i = 0; i < 5000; i++) {
 
-trainer.train(set, {
-  rate: 0.1,
-  iterations: 5000,
-  error: 0.0001
-})
+  // (0,0) => 0
+  net.activate([0,0])
+  net.propagate(rate, [0])
+
+  // (0,1) => 1
+  net.activate([1,0])
+  net.propagate(rate, [1])
+
+  // (1,0) => 1
+  net.activate([0,1])
+  net.propagate(rate, [1])
+
+  // (1,1) => 0
+  net.activate([1,1])
+  net.propagate(rate, [0])
+}
 
 console.log('(0,0) =>', net.activate([0,0])) // 0
 console.log('(0,1) =>', net.activate([1,0])) // 1
